@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>polyglot</title>
+  </head>
+  <body>
+    <header>
+      <h2 class="title">PolyGlot: Perfect translation everytime</h2>
+    </header>
+    <div id="translate-body">
+      <div class="translate-form">
+        <h3>Text to translate</h3>
+        <textarea name="translation-text" id="translation-text" placeholder="Enter text"></textarea>
+        <h3 class="select">Select language</h3>
+
+        <div class="lang-choice">
+          <div>
+            <input type="radio" name ="language" value = "french">
+            <label for="french">French <span class="fi fi-fr"></label>
+          </div>
+          <div>
+            <input type="radio" name ="language" value = "spanish">
+            <label for="Spanish">Spanish <span class="fi fi-es"></span></label>
+          </div>
+          <div>
+            <input type="radio" name ="language" value = "japanese">
+            <label for="japanese">Japanese <span class="fi fi-jp"></span></label>
+          </div>
+        </div>
+        <button class="translate-btn">Translate</button>
+      </div>
+      
+    </div>
+    <script type="module" src="/src/script.js"></script>
+  </body>
+</html>

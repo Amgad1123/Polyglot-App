@@ -13,27 +13,31 @@
     </header>
     <div id="translate-body">
       <div class="translate-form">
-        <h3>Text to translate</h3>
-        <textarea name="translation-text" id="translation-text" placeholder="Enter text"></textarea>
-        <h3 class="select">Select language</h3>
-
-        <div class="lang-choice">
-          <div>
-            <input type="radio" name ="language" value = "french">
-            <label for="french">French <span class="fi fi-fr"></label>
-          </div>
-          <div>
-            <input type="radio" name ="language" value = "spanish">
-            <label for="Spanish">Spanish <span class="fi fi-es"></span></label>
-          </div>
-          <div>
-            <input type="radio" name ="language" value = "japanese">
-            <label for="japanese">Japanese <span class="fi fi-jp"></span></label>
-          </div>
+        <div class="text-form">
+          <p class ='textbox-1'>Select the language you want me to translate into, type your text and hit send!</p>
         </div>
-        <button class="translate-btn">Translate</button>
-      </div>
-      
+        <div class="non-text">
+            <div class = 'answer-box'>
+              <input type="text" class="answer-entry">
+              <button class="send-message">send</button>
+            </div>
+          
+            <div class="lang-choice">
+            <div>
+              <input type="radio" name ="language" value = "french">
+              <label for="french"><span class="fi fi-fr"></label>
+            </div>
+            <div>
+              <input type="radio" name ="language" value = "spanish">
+              <label for="Spanish"><span class="fi fi-es"></span></label>
+            </div>
+            <div>
+              <input type="radio" name ="language" value = "japanese">
+              <label for="japanese" class = "japan"><span class="fi fi-jp"></span></label>
+            </div>
+          </div>
+          </div> 
+        </div>     
     </div>
     <script type="module" src="/src/script.js"></script>
   </body>

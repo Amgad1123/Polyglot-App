@@ -4,7 +4,7 @@ import OpenAI from 'openai';
 import cors from 'cors';
 
 const app = express();
-app.use(cors()); // Allows your Vite frontend to talk to this server
+app.use(cors()); 
 app.use(express.json());
 
 const openai = new OpenAI({

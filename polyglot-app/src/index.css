@@ -24,9 +24,68 @@ header {
   flex-direction: column;
   border: 2px solid black;
   border-radius: 8px;
-  min-width: 50%;
+  min-width: 300px;
   min-height: 40vh;
+  background-color: lightgrey;
+  margin-bottom: 20px;
 } 
+
+.text-form {
+  height: 350px;
+  width: 260px;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin: 15px;
+  align-items: end;
+  flex-direction: column;
+  display: flex;
+  overflow-y: scroll;
+  background-color: white;
+  scroll-behavior: smooth;
+}
+
+.textbox-1 {
+  padding: 5px;
+  background-color: blue;
+  color: white;
+  font-weight: 400;
+  font-size: 20px;
+  flex-wrap: wrap;
+  max-width: 210px;
+  border-radius: 8px;
+}
+
+.answer-box {
+  display: flex;
+  flex-direction: row;
+  width: 240px;
+  border: 1px solid black;
+  border-radius: 8px;
+  min-height: 50px;
+  padding: 1px;
+  background-color: white;
+}
+
+
+input:focus {
+  outline: none;
+}
+
+
+form:focus-within { 
+  outline: 1px solid blue 
+}
+
+.send-message {
+  background-color: greenyellow;
+  border-radius: 8px;
+  height: 30px;
+  align-self: center;
+}
+.answer-entry {
+  border: none;
+  flex-grow: 1.8;
+}
 
 #translation-text {
   width: 200px;
@@ -35,7 +94,13 @@ header {
 
 .lang-choice {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  margin-top: 15px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.japan {
+  border: 1px solid black;
 }
 
 .translate-btn {

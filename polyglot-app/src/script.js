@@ -1,69 +1,67 @@
-import OpenAi from 'openai'
-
 async function getTranslation(data, lang) {
-  const select = document.querySelector(".select");
-  select.innerHTML = "Loading...";
-
+  //const answer = document.querySelector(".answer");
+  //answer.setAttribute("style", "")
+  //answer.textContent =`...`;
+  //answer.style.display = "block";
+  const form = document.querySelector(".text-form");
+  const answer = document.createElement("p");
+  answer.textContent =`...`;
+  answer.setAttribute("style", "padding: 5px; background-color: blue; color: white; font-weight: 400; font-size: 20px; flex-wrap: wrap; border-radius: 8px;"); 
+  form.appendChild(answer);
+  scrolledToBottom();
   try {
     const response = await fetch('http://localhost:3000/translate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data, lang })
     });
-
-    const result = await response.json();
+  
+    
+  const result = await response.json();
 
     if (result.error) throw new Error(result.error);
-  
-    select.innerHTML = "";
-    
+    form.removeChild(answer)
     domManipulation(result.translation); 
   }
   catch (err) {
     alert("Error: " + err.message);
-    select.innerHTML = "";
   }
 }
 
 function domManipulation(response) {
-    const translated = document.createElement('textarea');
-    const restart = document.createElement('button');
-    const button = document.querySelector(".translate-btn");
-    restart.setAttribute("style", 'padding: 8px; color: black; background-color: #2e5894; font-size: medium; font-weight: 400; border-radius: 8px; width: 150px; margin: 20px 0;');
-    restart.innerText = "start over"
-    restart.classList.add("restart")
-    const body = document.querySelector(".translate-form") 
-    translated.setAttribute('style', 'width: 200px; height: 100px;')
-    translated.innerText = `${response}`
-    translated.classList.add("translated");
-    button.style.display = "none";
-    body.append(translated);
-    body.append(restart)
-    restart.addEventListener("click", startOver)
+  const form = document.querySelector(".text-form");
+  const answer = document.createElement("p");
+  answer.textContent =`${response}`;
+  answer.setAttribute("style", "padding: 5px; background-color: blue; color: white; max-width: 220px; font-weight: 400; font-size: 20px; flex-wrap: wrap; border-radius: 8px;"); 
+  form.appendChild(answer);
+  scrolledToBottom();
 }
 
-function startOver() {
-    const translated = document.querySelector('.translated');
-    document.querySelector("#translation-text").value = '';
-    document.querySelector('input[name="language"]:checked').checked = false;
-    const restart = document.querySelector('.restart');
-    const langChoice = document.querySelector('.lang-choice');
-    langChoice.style.display = "block";
-    restart.style.display = "none";
-    const button = document.querySelector(".translate-btn");
-    button.style.display = "block";
-    translated.style.display = "none";
-
+function scrolledToBottom() {
+  const form = document.querySelector(".text-form");
+  var isScrolledToBottom = form.scrollHeight - form.clientHeight <= form.scrollTop + 1;
+  if (isScrolledToBottom) {
+    form.scrollTop = form.scrollHeight - form.clientHeight;
+  }
 }
 
-const translate = document.querySelector(".translate-btn")
-translate.addEventListener("click", submission)
+const send = document.querySelector(".send-message")
+send.addEventListener("click", submission)
 
 function submission(event) {
   event.preventDefault();
-  const text = document.querySelector("#translation-text").value
-  const lang = document.querySelector('input[name="language"]:checked').value;
-  const langChoice = document.querySelector('.lang-choice');
-  langChoice.setAttribute("style", "display: none;")
-  getTranslation(text,lang);
+  const text = document.querySelector(".answer-entry").value;
+  const form = document.querySelector(".text-form");
+  const lang = document.querySelector('input[name="language"]:checked');
+  if (lang == null) {
+    alert("You must select a language before continuing!")
+  }
+  else {
+    const question = document.createElement("p");
+    question.textContent = `${text}`;
+    question.setAttribute("style", "padding: 5px; background-color: greenyellow; max-width: 220px; color: black; font-weight: 400; font-size: 20px; flex-wrap: wrap; border-radius: 8px;");
+    form.appendChild(question);
+    document.querySelector(".answer-entry").value = ''
+    getTranslation(text,lang.value);
+  }
 }

@@ -1,4 +1,4 @@
-# Sneaker Store Web App  
+# PolyGlot App
 An interactive multi-language learning chat app. Built using openai. 
 
 ## Tech stack
